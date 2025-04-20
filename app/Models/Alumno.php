@@ -9,4 +9,12 @@ class Alumno extends Model
 {
     /** @use HasFactory<\Database\Factories\AlumnoFactory> */
     use HasFactory;
+
+    protected $fillable = ['nombre', 'correo', 'creditos'];
+
+    public function eventos()
+    {
+        return $this->belongsToMany(Evento::class);
+
+    }
 }

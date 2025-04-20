@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use App\Models\Alumno;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreEventoRequest;
 use App\Http\Requests\UpdateEventoRequest;
 
@@ -13,7 +15,7 @@ class EventoController extends Controller
      */
     public function index()
     {
-        //
+        return view('evento.evento-index', ['eventos' => Evento::all()],);
     }
 
     /**
@@ -37,7 +39,8 @@ class EventoController extends Controller
      */
     public function show(Evento $evento)
     {
-        //
+        $alumnos = Alumno::all();
+        return view('evento.evento-show', compact('eventos', 'alumnos'));
     }
 
     /**
@@ -62,5 +65,10 @@ class EventoController extends Controller
     public function destroy(Evento $evento)
     {
         //
+    }
+    public function actualizarAlumnosEvento(Request $request, Evento $evento)
+    {
+        $evento->alumnos()->sync($request->alumno_id);
+        return redirect()->route('evento.show', $evento);
     }
 }

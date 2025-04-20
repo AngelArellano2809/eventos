@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('administrador_id');
+            $table->foreign('administrador_id')->references('id')->on('administradores');
+            $table->string('nombre');
+            $table->int('creditos');
+            $table->timestamps('dia');
             $table->timestamps();
         });
     }

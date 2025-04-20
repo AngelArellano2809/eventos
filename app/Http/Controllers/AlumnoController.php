@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Alumno;
 use App\Http\Requests\StoreAlumnoRequest;
 use App\Http\Requests\UpdateAlumnoRequest;
+use App\Models\Evento;
+use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
 {
@@ -13,7 +15,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        //
+        return view('alumno.alumno-index', ['alumnos' => Alumno::all()],);
     }
 
     /**
@@ -37,7 +39,8 @@ class AlumnoController extends Controller
      */
     public function show(Alumno $alumno)
     {
-        //
+        $eventos = Evento::all();
+        return view('alumno.alumno-show', compact('alumno', 'eventos'));
     }
 
     /**
@@ -62,5 +65,11 @@ class AlumnoController extends Controller
     public function destroy(Alumno $alumno)
     {
         //
+    }
+
+    public function actualizarEventosAlumno(Request $request, Alumno $alumno)
+    {
+        $alumno->eventos()->sync($request->evento_id);
+        return redirect()->route('alumno.show', $alumno);
     }
 }

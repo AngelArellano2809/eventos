@@ -26,6 +26,14 @@
             placeholder="email@example.com"
         />
 
+        <!-- Roll -->
+        <flux:select 
+            wire:model="roll" 
+            placeholder="Tipo de cuenta">
+            <flux:select.option>Alumno</flux:select.option>
+            <flux:select.option>Administrador</flux:select.option>
+        </flux:select>
+
         <!-- Password -->
         <flux:input
             wire:model="password"

@@ -10,15 +10,15 @@ use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('dashboard');
-})->name('home');
+    return view('dashboard', ['dashboard']);
+})->middleware(['auth', 'verified'])->name('home');
 
 
 Route::resource('eventos', EventoController::class);
 
-Route::resource('alumnos', AlumnoController::class);
+Route::resource('alumnos', AlumnoController::class)->middleware(['auth']);
 
-Route::resource('administradores', AdministradorController::class);
+Route::resource('administradores', AdministradorController::class)->middleware(['auth']);
 
 
 Route::view('dashboard', 'dashboard')->name('dashboard');

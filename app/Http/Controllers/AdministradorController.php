@@ -13,7 +13,7 @@ class AdministradorController extends Controller
      */
     public function index()
     {
-        return view('administrador.administrador-index', ['administradores' => Administrador::all()],);
+        return view('administradores.administrador-index', ['administradores' => Administrador::all()],);
     }
 
     /**
@@ -38,7 +38,7 @@ class AdministradorController extends Controller
     public function show(Administrador $administrador)
     {
         $eventos = Evento::all();
-        return view('administrador.administrador-show', compact('administrador', 'eventos'));
+        return view('administradores.administrador-show', compact('administrador', 'eventos'));
     }
 
     /**

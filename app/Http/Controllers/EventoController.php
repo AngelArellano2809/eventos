@@ -15,7 +15,7 @@ class EventoController extends Controller
      */
     public function index()
     {
-        return view('evento.evento-index', ['eventos' => Evento::all()],);
+        return view('eventos.evento-index', ['eventos' => Evento::all()],);
     }
 
     /**
@@ -40,7 +40,7 @@ class EventoController extends Controller
     public function show(Evento $evento)
     {
         $alumnos = Alumno::all();
-        return view('evento.evento-show', compact('eventos', 'alumnos'));
+        return view('eventos.evento-show', compact('eventos', 'alumnos'));
     }
 
     /**

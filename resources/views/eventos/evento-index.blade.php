@@ -13,7 +13,7 @@
 
                 @foreach ($eventos as $evento)
                     <tr>
-                        <td><a href="{{ route('evento.show', $evento) }}">{{ $evento->nombre }}</a></td>
+                        <td><a href="{{ route('eventos.show', $evento) }}">{{ $evento->nombre }}</a></td>
                         <td>{{ $evento->administrador->nombre }}</td>
                         <td>{{ $evento->codigo }}</td>
                         <td>{{ $evento->creditos }}</td>

@@ -14,14 +14,14 @@ Route::get('/', function () {
 })->middleware(['auth', 'verified'])->name('home');
 
 
-Route::resource('eventos', EventoController::class);
+Route::resource('eventos', EventoController::class)->middleware(['auth', 'verified']);
 
-Route::resource('alumnos', AlumnoController::class)->middleware(['auth']);
+Route::resource('alumnos', AlumnoController::class)->middleware(['auth', 'verified']);
 
-Route::resource('administradores', AdministradorController::class)->middleware(['auth']);
+Route::resource('administradores', AdministradorController::class)->middleware(['auth', 'verified']);
 
 
-Route::view('dashboard', 'dashboard')->name('dashboard');
+Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

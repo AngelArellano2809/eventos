@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('correo')->unique();
-            $table->int('creditos');
+            $table->integer('creditos');
             $table->timestamps();
         });
     }

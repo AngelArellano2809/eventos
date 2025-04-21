@@ -12,7 +12,7 @@ class Evento extends Model
 
     protected $fillable = ['nombre', 'creditos', 'dia'];
 
-    public function docente()
+    public function administrador()
     {
         return $this->belongsTo(Administrador::class);
     }

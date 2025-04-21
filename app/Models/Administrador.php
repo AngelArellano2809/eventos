@@ -10,9 +10,11 @@ class Administrador extends Model
     /** @use HasFactory<\Database\Factories\AdministradorFactory> */
     use HasFactory;
 
+    protected $table = 'administradores';
+
     protected $fillable = ['nombre','correo',];
 
-    public function secciones()
+    public function eventos()
     {
         return $this->hasMany(Evento::class);
     }

@@ -16,8 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('administrador_id');
             $table->foreign('administrador_id')->references('id')->on('administradores');
             $table->string('nombre');
-            $table->int('creditos');
-            $table->timestamps('dia');
+            $table->string('codigo');
+            $table->integer('creditos');
+            $table->dateTime('dia');
             $table->timestamps();
         });
     }

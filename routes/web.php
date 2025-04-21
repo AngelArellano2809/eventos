@@ -1,17 +1,27 @@
 <?php
 
+use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\AdministradorController;
+use App\Http\Controllers\EventoController;
+
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+
+Route::resource('eventos', EventoController::class);
+
+Route::resource('alumnos', AlumnoController::class);
+
+Route::resource('administradores', AdministradorController::class);
+
+
+Route::view('dashboard', 'dashboard')->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

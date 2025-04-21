@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Evento;
 use App\Models\Administrador;
 use App\Http\Requests\StoreAdministradorRequest;
 use App\Http\Requests\UpdateAdministradorRequest;
@@ -13,7 +13,7 @@ class AdministradorController extends Controller
      */
     public function index()
     {
-        //
+        return view('administrador.administrador-index', ['administradores' => Administrador::all()],);
     }
 
     /**
@@ -37,7 +37,8 @@ class AdministradorController extends Controller
      */
     public function show(Administrador $administrador)
     {
-        //
+        $eventos = Evento::all();
+        return view('administrador.administrador-show', compact('administrador', 'eventos'));
     }
 
     /**
